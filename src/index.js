@@ -311,7 +311,13 @@ export const AutocompleteDropdown = memo(
     )
 
     return (
-      <View style={[styles.container, props.containerStyle]}>
+      <View
+        style={[
+          styles.container,
+          Platform.select({ ios: { zIndex: 1 } }),
+          props.containerStyle,
+        ]}
+      >
         {/* it's necessary use onLayout here for Androd (bug?) */}
         <View
           ref={containerRef}
