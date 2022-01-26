@@ -284,14 +284,17 @@ export const AutocompleteDropdown = memo(
       [dataSet, clearOnFocus, props.onFocus]
     )
 
-    const onBlur = useCallback((e) => {
-      if (props.closeOnBlur) {
-        close()
-      }
-      if (typeof props.onBlur === 'function') {
-        props.onBlur(e)
-      }
-    }, [props.closeOnBlur, props.onBlur])
+    const onBlur = useCallback(
+      (e) => {
+        if (props.closeOnBlur) {
+          close()
+        }
+        if (typeof props.onBlur === 'function') {
+          props.onBlur(e)
+        }
+      },
+      [props.closeOnBlur, props.onBlur]
+    )
 
     const onSubmit = useCallback(
       (e) => {
@@ -308,13 +311,7 @@ export const AutocompleteDropdown = memo(
     )
 
     return (
-      <View
-        style={[
-          styles.container,
-          props.containerStyle,
-          Platform.select({ ios: { zIndex: 1 } }),
-        ]}
-      >
+      <View style={[styles.container, props.containerStyle]}>
         {/* it's necessary use onLayout here for Androd (bug?) */}
         <View
           ref={containerRef}
@@ -370,7 +367,9 @@ export const AutocompleteDropdown = memo(
                 <View>
                   {scrollContent.length > 0
                     ? scrollContent
-                    : !!searchText && <NothingFound emptyResultText={props.emptyResultText} />}
+                    : !!searchText && (
+                        <NothingFound emptyResultText={props.emptyResultText} />
+                      )}
                 </View>
               }
             </ScrollViewComponent>
@@ -408,7 +407,7 @@ AutocompleteDropdown.propTypes = {
   ChevronIconComponent: PropTypes.element,
   ClearIconComponent: PropTypes.element,
   ScrollViewComponent: PropTypes.elementType,
-  emptyResultText: PropTypes.string
+  emptyResultText: PropTypes.string,
 }
 
 const styles = ScaledSheet.create({
