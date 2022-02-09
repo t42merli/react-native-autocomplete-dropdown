@@ -373,7 +373,8 @@ export const AutocompleteDropdown = memo(
                 <View>
                   {scrollContent.length > 0
                     ? scrollContent
-                    : !!searchText && (
+                    : !!searchText &&
+                      !hideEmpty && (
                         <NothingFound emptyResultText={props.emptyResultText} />
                       )}
                 </View>
@@ -414,6 +415,7 @@ AutocompleteDropdown.propTypes = {
   ClearIconComponent: PropTypes.element,
   ScrollViewComponent: PropTypes.elementType,
   emptyResultText: PropTypes.string,
+  hideEmpty: PropTypes.bool,
 }
 
 const styles = ScaledSheet.create({

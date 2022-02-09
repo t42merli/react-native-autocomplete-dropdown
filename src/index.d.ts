@@ -30,7 +30,10 @@ interface AutocompleteDropdownProps {
   textInputProps?: object
   onChangeText?(text: string): any
   onSelectItem?(item: TAutocompleteDropdownItem): any
-  renderItem?: (item: TAutocompleteDropdownItem, searchText: string) => JSX.Element
+  renderItem?: (
+    item: TAutocompleteDropdownItem,
+    searchText: string
+  ) => JSX.Element
   onOpenSuggestionsList?(isOpened: boolean): any
   onClear?(): any
   onSubmit?(e: any): any
@@ -46,6 +49,7 @@ interface AutocompleteDropdownProps {
   ScrollViewComponent?: JSX.Element
   InputComponent?: JSX.Element
   emptyResultText?: string
+  hideEmpty?: boolean
 }
 
 export const AutocompleteDropdown: FC<AutocompleteDropdownProps>
