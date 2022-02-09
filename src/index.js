@@ -374,7 +374,7 @@ export const AutocompleteDropdown = memo(
                   {scrollContent.length > 0
                     ? scrollContent
                     : !!searchText &&
-                      !hideEmpty && (
+                      !props.hideEmpty && (
                         <NothingFound emptyResultText={props.emptyResultText} />
                       )}
                 </View>
